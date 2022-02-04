@@ -114,10 +114,40 @@
                   <li class='' >
                      <a  title='blogs' href="{{ route('blogs.index')}}">
                      <em class='icon-list'></em><span>All blogs</span></a>
+               <a data-toggle='collapse' href='#countries'> <em class='fa fa-newspaper-o'></em><span>Countries</span></a>
+               <ul id=countries class='nav s-menu sidebar-subnav collapse'>
+                  <li class="sidebar-subnav-header">Countries
+                  </li>
+                  <li class='' >
+                     <a  title='Add Post' href="{{ route('countries.create') }}">
+                     <em class='fa fa-plus'></em><span>Add Country</span></a>
+                  </li>
+                  <li class='' >
+                     <a  title='All posts' href="{{ route('countries.index') }}">
+                     <em class='icon-list'></em><span>All Countries</span></a>
+                  </li>                  
+               </ul>
+            </li>
+            <li class='sub-menu '>
+               <a data-toggle='collapse' href='#course'> <em class='fa fa-book'></em><span>Courses</span></a>
+               <ul id=course class='nav s-menu sidebar-subnav collapse'>
+                  <li class="sidebar-subnav-header">Courses
+                  </li>
+                  <li class='' >
+                     <a  title='Add Course' href="">
+                     <em class='fa fa-plus'></em><span>Add New</span></a>
+                  </li>
+                  <li class='' >
+                     <a  title='Courses' href="">
+                     <em class='icon-list'></em><span>All Courses</span></a>
                   </li>
                </ul>
             </li>
             
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 158fb94ee669cc4713370f5ebdbebe01ccaede3f
             <li class='sub-menu '>
                <a data-toggle='collapse' href='#testimonials'> <em class='fa fa-users'></em><span>Testimonials</span></a>
                <ul id=testimonials class='nav s-menu sidebar-subnav collapse'>

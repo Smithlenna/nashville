@@ -44,17 +44,6 @@
 <!-- =============== APP SCRIPTS ===============-->
 <script src="/admin/js/app.js"></script>
 <script src = "/admin/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript">
-   $(document).ready(function () {
-   $('#datatable_action').dataTable({
-       paging: true,
-       "bSort": false,
-       'dom': 'lBfrtip',  // Bottom left status text
-       buttons: [],
-       select: true,
-   });
-   });
-</script>
 </body>
 @yield('scripts')
 </html>
@@ -62,14 +51,14 @@
 <!-- SELECT2-->
 <script src="/admin/js/select2.min.js"></script>
 <script src="{{ asset('/vendor/fancybox/jquery.fancybox.pack.js') }}"></script>
-<script src="{{ secure_asset('/vendor/ck/ckeditor.js') }}"></script>
+<script src="{{ asset('/vendor/ck/ckeditor.js') }}"></script>
 <script>
-   $('.iframe-btn').fancybox({
-       'width'		: 900,
-       'height'	: 400,
-       'type'		: 'iframe',
-       'autoScale'    	: false
-   });
+//    $('.iframe-btn').fancybox({
+//        'width'		: 900,
+//        'height'	: 400,
+//        'type'		: 'iframe',
+//        'autoScale'    	: false
+//    });
    CKEDITOR.replaceClass = 'editor';
 </script>
 <script>

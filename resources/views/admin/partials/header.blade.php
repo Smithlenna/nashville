@@ -44,6 +44,11 @@
     <link rel="stylesheet" href="/admin/css/dataTables.colVis.min.css">
     <link rel="stylesheet" href="/admin/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="/admin/css/responsive.dataTables.min.css">
+    <style>
+        img[src=""] {
+            display: none;
+        }
+    </style>
     <!-- summernote Editor -->
 
     <!--- bootstrap-select ---->
