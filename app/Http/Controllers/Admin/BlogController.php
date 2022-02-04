@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
 {
@@ -15,9 +16,34 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data =  Blog::latest()->get();
+        if($request->ajax()){
+            return DataTables::of($data)
+            ->addColumn('title', function ($row) {
+                return $row['title'];
+            })
+            ->addColumn('image', function ($row) {
+                return $row['image'];
+            })
+            ->addColumn('summary', function ($row) {
+                return $row['summary'];
+            })
+            ->addColumn('created_at', function ($row) {
+                return date('d-m-Y', strtotime($row['created_at']));
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="d-flex">';
+                $btn .= view('admin.partials.editBtn', ['route' => route('blogs.edit', $row['id'])])->render();
+                $btn .= view('admin.partials.deleteBtn', ['route' => route('blogs.destroy', $row['id'])])->render();
+                $btn .= '</div>';
+                return $btn;
+            })
+            ->rawColumns(['title','created_at' ,'image', 'summary','action'])
+            ->make(true);
+        }
+        return view('admin.blog.index');
     }
 
     /**
@@ -39,6 +65,7 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         $data = $request->validated();
+        try{
             if ($request->hasFile('image')) {
                 $image_name = uploadImage($request->image, 'blogss');
                 if ($image_name) {
@@ -46,8 +73,17 @@ class BlogController extends Controller
                 }
             }
             $blog = Blog::create($data);
-            if($blog){
-            return redirect()->route('blogs.index');
+            $notification = array(
+                'message' => 'Blog created successfully.',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('blogs.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = array(
+                'message' => 'Problem while creating blog.',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
 
     }
@@ -85,6 +121,7 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request,  Blog $blog)
     {
         $data = $request->validated();
+        try{
             if ($request->hasFile('image')) {
                 $image_name = uploadImage($request->image, 'blogss');
                 if ($image_name) {
@@ -92,7 +129,19 @@ class BlogController extends Controller
                 }
             }
             $blog->update($data);
-            return redirect()->route('blogs.index');
+            $notification = array(
+                'message' => 'blog updated successfully.',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('blogs.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = array(
+                'message' => 'Problem while updating blog.',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
 
     }
 
@@ -106,7 +155,11 @@ class BlogController extends Controller
     {
         $blog->delete();
         if($blog){
-        return redirect()->route('blogs.index');
+            $notification = array(
+                'message' => 'blog deleted successfully.',
+                'alert-type' => 'success'
+            );    
+        return redirect()->route('blogs.index')->with($notification);
     }
     }
 }

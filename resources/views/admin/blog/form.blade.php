@@ -37,21 +37,21 @@
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label class="col-lg-2 control-label"><strong>Description</strong><span class="text-danger">*</span></label>
+                                      <label class="col-lg-2 control-label"><strong>Summary</strong><span class="text-danger">*</span></label>
                                       <div class="col-sm-9">
-                                          <textarea class="form-control editor" name="description" id="" cols="30" rows="10">{{ @$data->description }}</textarea>
-                                          @if ($errors->has('description'))
-                                          <span class="validation-errors text-danger">{{ $errors->first('description') }}</span>
+                                          <textarea class="form-control" name="summary" id="" cols="10" rows="4">{{ @$data->summary }}</textarea>
+                                          @if ($errors->has('summary'))
+                                          <span class="validation-errors text-danger">{{ $errors->first('summary') }}</span>
                                           @endif
                                       </div>
                                   </div>
 
                                   <div class="form-group row">
-                                      <label class="col-lg-2 control-label"><strong>Summary</strong><span class="text-danger">*</span></label>
+                                      <label class="col-lg-2 control-label"><strong>Description</strong><span class="text-danger">*</span></label>
                                       <div class="col-sm-9">
-                                          <textarea class="form-control editor" name="summary" id="" cols="30" rows="10">{{ @$data->summary }}</textarea>
-                                          @if ($errors->has('summary'))
-                                          <span class="validation-errors text-danger">{{ $errors->first('summary') }}</span>
+                                          <textarea class="form-control editor" name="description" id="" cols="30" rows="10">{{ @$data->description }}</textarea>
+                                          @if ($errors->has('description'))
+                                          <span class="validation-errors text-danger">{{ $errors->first('description') }}</span>
                                           @endif
                                       </div>
                                   </div>
