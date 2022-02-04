@@ -101,7 +101,22 @@
                   </li>
                </ul>
             </li>
-            
+
+            <li class='sub-menu '>
+               <a data-toggle='collapse' href='#blog'> <em class='fa fa-book'></em><span>Blogs</span></a>
+               <ul id=blog class='nav s-menu sidebar-subnav collapse'>
+                  <li class="sidebar-subnav-header">Blogs
+                  </li>
+                  <li class='' >
+                     <a  title='Add Blog' href="{{ route('blogs.create')}}">
+                     <em class='fa fa-plus'></em><span>Add New</span></a>
+                  </li>
+                  <li class='' >
+                     <a  title='blogs' href="{{ route('blogs.index')}}">
+                     <em class='icon-list'></em><span>All blogs</span></a>
+                  </li>
+               </ul>
+            </li>
             
             <li class='sub-menu '>
                <a data-toggle='collapse' href='#testimonials'> <em class='fa fa-users'></em><span>Testimonials</span></a>

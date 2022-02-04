@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\V1\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,5 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::get('/dashboard', [AdminController::class, 'index']);
+    Route::resource('blogs', BlogController::class);
 });
