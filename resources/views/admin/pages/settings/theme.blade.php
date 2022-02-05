@@ -13,9 +13,12 @@
                      <section class="">
                         <div class="row">
                            <div class="col-lg-12">
-                            {{-- {{ route('theme.update', $data->id)}} --}}
-                             <form role="form" id="form" action="" method="post" class="form-horizontal" enctype='multipart/form-data'>
-                             <input name="_method" type="hidden" value="PATCH">
+                            @if ($setting == null)
+                            <form role="form" id="form" action="{{ route('settings.store') }}" method="post" class="form-horizontal" enctype='multipart/form-data'>
+                            @else
+                            <form role="form" id="form" action="{{ route('settings.update', $setting->id) }}" method="post" class="form-horizontal" enctype='multipart/form-data'>
+                            <input name="_method" type="hidden" value="PATCH">
+                            @endif                             
                                @csrf
                                <div class="panel panel-custom">
                                    <header class="panel-heading ">Theme Settings</header>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSettingRequest;
+use App\Http\Requests\UpdateSettingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -10,9 +12,9 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $data = Setting::find(1);
+        $setting = Setting::find(1);
         $active = 'theme';
-        return view('admin.pages.settings.theme', compact('data', 'active'));
+        return view('admin.pages.settings.theme', compact('setting', 'active'));
     }
 
     public function create()
@@ -20,28 +22,22 @@ class SettingController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(StoreSettingRequest $request)
     {
-      $rules = Setting::getRules();
-      $request->validate($rules);
-      $data = $request->all();
-      $data['logo'] = $request->logo;
-      $data['favicon'] = $request->favicon;
-      $data['login_background'] = $request->login_background;
-      Setting::fill($data);
-      $status = Setting::save();
-      if($status){
+      $attributes = $request->validated();
+      try{
+        Setting::create($attributes);
         $notification = array(
-          'message' => 'Theme added successfully.',
+          'message' => 'Setting added successfully.',
           'alert-type' => 'success'
         );
-      } else {
+      } catch (\Throwable $th) {
         $notification = array(
-          'message' => 'Problem adding theme.',
+          'message' => 'Problem adding Setting.',
           'alert-type' => 'error'
         );
       }
-      return redirect()->route('theme.index')->with($notification);
+      return redirect()->route('settings.index')->with($notification);
     }
 
     /**
@@ -73,33 +69,22 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSettingRequest $request,Setting $setting)
     {
-      $this->theme = Setting::find($id);
-      if(!$this->theme) {
+      $attributes = $request->validated();
+      try{
+        $setting->update($attributes);
         $notification = array(
-          'message' => 'Theme not found!',
-          'alert-type' => 'error'
-        );
-        return redirect()->back()->with($notification);
-      }
-      $rules = Setting::getRules('update');
-      $request->validate($rules);
-      $data = $request->all();
-      Setting::fill($data);
-      $status = Setting::save();
-      if($status){
-        $notification = array(
-          'message' => 'Theme updated successfully.',
+          'message' => 'Setting updated successfully.',
           'alert-type' => 'success'
         );
-      } else {
+      } catch (\Throwable $th) {
         $notification = array(
-          'message' => 'Problem updating theme.',
+          'message' => 'Problem updating Setting.',
           'alert-type' => 'error'
         );
       }
-      return redirect()->route('theme.index')->with($notification);
+      return redirect()->route('settings.index')->with($notification);
     }
 
     /**

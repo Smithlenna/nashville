@@ -17,7 +17,6 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('logo');
             $table->string('favicon');
-            $table->string('login_background');
             $table->timestamps();
         });
     }

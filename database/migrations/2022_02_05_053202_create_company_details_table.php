@@ -16,12 +16,12 @@ class CreateCompanyDetailsTable extends Migration
         Schema::create('company_details', function (Blueprint $table) {
             $table->id();
             $table->string('company_name');
-            $table->string('company_registration')->nullable();
+            $table->string('registration')->nullable();
             $table->string('vat')->nullable();
             $table->string('contact_person');
             $table->string('company_address');
             $table->longText('map');
-            $table->string('zip_code');
+            $table->string('zipcode');
             $table->string('primary_number');
             $table->string('secondary_number')->nullable();
             $table->string('email');
