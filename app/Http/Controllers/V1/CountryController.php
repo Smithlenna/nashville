@@ -56,6 +56,16 @@ class CountryController extends Controller
     {
         $attributes = $request->validated();
         try{
+            if ($request->hasFile('image')) {
+                $image_name = uploadImage($request->image, 'countries');
+                $flag_name = uploadImage($request->image, 'countries');
+                $cover_name = uploadImage($request->image, 'countries');
+                if ($image_name && $flag_name && $cover_name) {
+                    $data['image'] = $image_name;
+                    $data['flag'] = $flag_name;
+                    $data['cover'] = $cover_name;
+                }
+            }
             Country::create($attributes);
             $notification = array(
                 'message' => 'Country created successfully.',
@@ -81,11 +91,11 @@ class CountryController extends Controller
         return view('admin.pages.countries.add_country', compact('country'));
     }
 
-    public function update(UpdateCountryRequest $request, $id)
+    public function update(UpdateCountryRequest $request, Country $country)
     {
         $attributes = $request->validated();
         try{
-            Country::update($attributes);
+            $country->update($attributes);
             $notification = array(
                 'message' => 'Country updated successfully.',
                 'alert-type' => 'success'

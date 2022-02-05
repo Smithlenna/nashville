@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class HeroImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','summary','image','description','slug', 'status'];
+    protected $fillable = ['first', 'second', 'third', 'image', 'status'];
 }

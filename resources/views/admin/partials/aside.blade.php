@@ -68,66 +68,38 @@
                <em class='fa fa-dashboard'></em><span>Dashboard</span></a>
             </li>
             <li class='sub-menu '>
-               <a data-toggle='collapse' href='#news'> <em class='fa fa-newspaper-o'></em><span>Posts</span></a>
+               <a data-toggle='collapse' href='#news'> <em class='fa fa-newspaper-o'></em><span>Blogs</span></a>
                <ul id=news class='nav s-menu sidebar-subnav collapse'>
-                  <li class="sidebar-subnav-header">Posts
+                  <li class="sidebar-subnav-header">Blogs
                   </li>
                   <li class='' >
-                     <a  title='Add Post' href="">
+                     <a  title='Add Post' href="{{ route('blogs.create')}}">
                      <em class='fa fa-plus'></em><span>Add New</span></a>
                   </li>
                   <li class='' >
                      <a  title='All posts' href="">
-                     <em class='icon-list'></em><span>All Posts</span></a>
-                  </li>
-                  <li class='' >
-                     <a  title='Categories' href="">
-                     <em class='fa fa-sitemap'></em><span>Category</span></a>
-                  </li>
+                     <em class='icon-list'></em><span>All Blogs</span></a>
+                  </li>                  
                </ul>
             </li>
+            
             <li class='sub-menu '>
-               <a data-toggle='collapse' href='#course'> <em class='fa fa-book'></em><span>Courses</span></a>
-               <ul id=course class='nav s-menu sidebar-subnav collapse'>
-                  <li class="sidebar-subnav-header">Courses
-                  </li>
-                  <li class='' >
-                     <a  title='Add Course' href="">
-                     <em class='fa fa-plus'></em><span>Add New</span></a>
-                  </li>
-                  <li class='' >
-                     <a  title='Courses' href="">
-                     <em class='icon-list'></em><span>All Courses</span></a>
-                  </li>
-               </ul>
-            </li>
-
-            <li class='sub-menu '>
-               <a data-toggle='collapse' href='#blog'> <em class='fa fa-book'></em><span>Blogs</span></a>
-               <ul id=blog class='nav s-menu sidebar-subnav collapse'>
-                  <li class="sidebar-subnav-header">Blogs
-                  </li>
-                  <li class='' >
-                     <a  title='Add Blog' href="{{ route('blogs.create')}}">
-                     <em class='fa fa-plus'></em><span>Add New</span></a>
-                  </li>
-                  <li class='' >
-                     <a  title='blogs' href="{{ route('blogs.index')}}">
-                     <em class='icon-list'></em><span>All blogs</span></a>
                <a data-toggle='collapse' href='#countries'> <em class='fa fa-newspaper-o'></em><span>Countries</span></a>
                <ul id=countries class='nav s-menu sidebar-subnav collapse'>
                   <li class="sidebar-subnav-header">Countries
                   </li>
                   <li class='' >
                      <a  title='Add Post' href="{{ route('countries.create') }}">
-                     <em class='fa fa-plus'></em><span>Add Country</span></a>
+                     <em class='fa fa-plus'></em><span>Add New</span></a>
                   </li>
                   <li class='' >
                      <a  title='All posts' href="{{ route('countries.index') }}">
-                     <em class='icon-list'></em><span>All Countries</span></a>
+                     <em class='icon-list'></em><span>All Blogs</span></a>
                   </li>                  
                </ul>
             </li>
+
+            
             <li class='sub-menu '>
                <a data-toggle='collapse' href='#course'> <em class='fa fa-book'></em><span>Courses</span></a>
                <ul id=course class='nav s-menu sidebar-subnav collapse'>
@@ -144,10 +116,6 @@
                </ul>
             </li>
             
-<<<<<<< HEAD
-=======
-            
->>>>>>> 158fb94ee669cc4713370f5ebdbebe01ccaede3f
             <li class='sub-menu '>
                <a data-toggle='collapse' href='#testimonials'> <em class='fa fa-users'></em><span>Testimonials</span></a>
                <ul id=testimonials class='nav s-menu sidebar-subnav collapse'>
@@ -163,11 +131,14 @@
                   </li>
                </ul>
             </li>
+            {{-- @if($active_menu == "company") active  @endif --}}
+            <li class=''>
+               <a  title='Settings' href="{{url('/admin/settings')}}">
+              <em class='fa fa-cogs'></em><span>Settings</span></a>
+            </li>
 
             
-            <li class="">
-              <a title="File Upload" href="           <em class="fa fa-cog"></em><span>Setting</span></a>
-            </li>
+            
          </ul>
 
 

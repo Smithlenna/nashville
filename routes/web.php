@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\V1\AdminController;
+use App\Http\Controllers\V1\CompanyDetailController;
 use App\Http\Controllers\V1\CountryController;
+use App\Http\Controllers\V1\SettingController;
+use App\Http\Controllers\V1\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +28,13 @@ Auth::routes();
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+    Route::get('/settings', function () {
+        return view('admin.pages.setting');
+    });
     Route::get('/dashboard', [AdminController::class, 'index']);
     Route::resource('blogs', BlogController::class);
     Route::resource('countries', CountryController::class);
+    Route::resource('company', CompanyDetailController::class);
+    Route::resource('social', SocialController::class);
+    Route::resource('settings', SettingController::class);
 });
