@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateBlogRequest extends FormRequest
+class UpdateCourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class UpdateBlogRequest extends FormRequest
      */
     public function rules()
     {
-        return array_merge((new StoreBlogRequest())->rules(), [
+        return array_merge((new StoreCourseRequest())->rules(), [
             'image' => ['sometimes'],
         ]);
     }

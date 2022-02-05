@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->longText('summary');
             $table->longText('description');
             $table->string('image');
+            $table->string('slug');
             $table->enum('status', ['publish', 'draft']);
             $table->timestamps();
         });
