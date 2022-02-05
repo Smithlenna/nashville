@@ -77,7 +77,7 @@
                      <em class='fa fa-plus'></em><span>Add New</span></a>
                   </li>
                   <li class='' >
-                     <a  title='All posts' href="">
+                     <a  title='All posts' href="{{ route('blogs.index')}}">
                      <em class='icon-list'></em><span>All Blogs</span></a>
                   </li>                  
                </ul>
@@ -94,7 +94,7 @@
                   </li>
                   <li class='' >
                      <a  title='All posts' href="{{ route('countries.index') }}">
-                     <em class='icon-list'></em><span>All Blogs</span></a>
+                     <em class='icon-list'></em><span>All Countries</span></a>
                   </li>                  
                </ul>
             </li>
@@ -106,11 +106,11 @@
                   <li class="sidebar-subnav-header">Courses
                   </li>
                   <li class='' >
-                     <a  title='Add Course' href="">
+                     <a  title='Add Course' href="{{ route('courses.create') }}">
                      <em class='fa fa-plus'></em><span>Add New</span></a>
                   </li>
                   <li class='' >
-                     <a  title='Courses' href="">
+                     <a  title='Courses' href="{{ route('courses.index') }}">
                      <em class='icon-list'></em><span>All Courses</span></a>
                   </li>
                </ul>
@@ -122,11 +122,11 @@
                   <li class="sidebar-subnav-header">Testimonials
                   </li>
                   <li class='' >
-                     <a  title='Add Testimonial' href="">
+                     <a  title='Add Testimonial' href="{{ route('testimonials.create') }}">
                      <em class='fa fa-plus'></em><span>Add New</span></a>
                   </li>
                   <li class='' >
-                     <a  title='Testimonials' href="">
+                     <a  title='Testimonials' href="{{ route('testimonials.index') }}">
                      <em class='icon-list'></em><span>All Testimonials</span></a>
                   </li>
                </ul>

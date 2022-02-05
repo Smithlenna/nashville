@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\V1\AdminController;
-use App\Http\Controllers\V1\CompanyDetailController;
-use App\Http\Controllers\V1\CountryController;
-use App\Http\Controllers\V1\SettingController;
-use App\Http\Controllers\V1\SocialController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CompanyDetailController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('blogs', BlogController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('company', CompanyDetailController::class);
+    Route::resource('courses', CourseController::class);
     Route::resource('social', SocialController::class);
     Route::resource('settings', SettingController::class);
+    Route::resource('testimonials', TestimonialController::class);
 });

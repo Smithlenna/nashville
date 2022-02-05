@@ -5,17 +5,16 @@
       <div class="panel panel-custom" data-collapsed="0">
          <div class="panel-heading">
             <div class="panel-title">
-               <strong>All Countries</strong>
+               <strong>List Testimonial</strong>
             </div>
          </div>
         <div class="panel-body">
-            <table class="table table-bordered table-striped table-vcenter text-center pt-2" id="countries">
+            <table class="table table-bordered table-striped table-vcenter text-center pt-2" id="testimonials">
                 <thead>
                     <tr>
-                        <th>Country</th>
+                        <th>Name</th>
+                        <th>Position</th>
                         <th>Image</th>
-                        <th>Flag</th>
-                        <th>Cover</th>
                         <th>Status</th>
                         <th>Created At</th>
                         <th>Action</th>
@@ -29,14 +28,13 @@
 @endsection
 @section('scripts')
 <script>
-    var table = $('#countries').dataTable({
+    var table = $('#testimonials').dataTable({
         dom: 'lBftrip',
-        "ajax": "{{ route('countries.index') }}",
+        "ajax": "{{ route('testimonials.index') }}",
         "columns": [
             {"data": "name"},
+            {"data": "position"},
             {"data": "image"},
-            {"data": "flag"},
-            {"data": "cover"},
             {"data": "status"},
             {"data": "created_at"},
             {"data": "action"},
